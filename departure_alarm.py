@@ -1,6 +1,8 @@
 import datetime
+import os
 import requests
 import sys
+import time
 
 import numpy as np
 import pandas as pd
@@ -427,5 +429,7 @@ if __name__ == '__main__':
         Each command line argument is assumed to be a date string
         of the form YYYY-MM-DD
     """
+    os.environ['TZ'] = "US/Eastern"
+    time.tzset()
     recommendations = recommend(sys.argv[1:], verbose=False)
     print(recommendations)
